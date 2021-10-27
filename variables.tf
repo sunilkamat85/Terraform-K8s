@@ -21,14 +21,14 @@ variable "image" {
 variable "ext_port" {
   type = map
   
-  validation {
-    condition = max(var.ext_port["dev"]...) <= 65535 && min(var.ext_port["dev"]...) > 0
-    error_message = "The ext port should be between 65535 and Zero."
-  }
-  validation {
-    condition = max(var.ext_port["prod"]...) <= 65535 && min(var.ext_port["prod"]...) > 0
-    error_message = "The ext port should be between 65535 and Zero."
-  }
+  # validation {
+  #   condition = max(var.ext_port["dev"]...) <= 65535 && min(var.ext_port["dev"]...) > 0
+  #   error_message = "The ext port should be between 65535 and Zero."
+  # }
+  # validation {
+  #   condition = max(var.ext_port["prod"]...) <= 65535 && min(var.ext_port["prod"]...) > 0
+  #   error_message = "The ext port should be between 65535 and Zero."
+  # }
 }
 
 variable "int_port" {
@@ -42,6 +42,6 @@ variable "int_port" {
 }
 
 
-locals {
-  container_count = length(var.ext_port[terraform.workspace])
-}
+# locals {
+#   container_count = length(var.ext_port[terraform.workspace])
+# }
