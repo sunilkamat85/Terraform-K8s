@@ -10,6 +10,11 @@ resource "docker_container" "nodered_container" {
     container_path = var.container_path_in
     volume_name = docker_volume.container_volume.name
   }
+   provisioner "local-exec" {
+    when = create
+    command = "echo ${self.name}: ${self.ip_address}:${join("", [for x in self.ports[*]["external"]: x])} >> ${path.cwd}/mikeperry"
+    on_failure = fail
+  }
 }
 
 resource "docker_volume" "container_volume" {
@@ -27,4 +32,5 @@ resource "docker_volume" "container_volume" {
     command = "sudo tar -czvf ${path.cwd}/../backup/${self.name}.tar.gz ${self.mountpoint}/"
     on_failure = fail
   }
+
 }

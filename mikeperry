@@ -1,0 +1,4 @@
+nodered-dev-s05l: 172.17.0.2:port
+influxdb-dev-o322: 172.17.0.3:port
+nodered-dev-rep6: 172.17.0.3:1980
+influxdb-dev-ar8b: 172.17.0.2:8186
